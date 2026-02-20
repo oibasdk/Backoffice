@@ -1,4 +1,4 @@
-قimport React from 'react';
+import React from 'react';
 
 export const Icon: React.FC<{ icon?: string; width?: number }> = ({ icon, width }) => {
   // Lightweight fallback for environments without @iconify/react.

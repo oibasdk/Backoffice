@@ -13,15 +13,15 @@ stderr | src/app/__tests__/CommandPalette.ai.test.tsx > CommandPalette AI sugges
 ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
 ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
 
- ✓ src/app/__tests__/CommandPalette.ai.test.tsx > CommandPalette AI suggestions > shows AI suggestion when typing 574ms
- ✓ src/app/__tests__/client.test.ts > normalizes json error responses
- ✓ src/app/__tests__/client.test.ts > normalizes non-json error responses
+ ✓ src/app/__tests__/CommandPalette.ai.test.tsx > CommandPalette AI suggestions > shows AI suggestion when typing 877ms
 stdout | src/app/__tests__/client.test.ts > normalizes json error responses
 api_error { path: '/bff/admin/blocked', status: 403, request_id: 'req-123' }
 
 stdout | src/app/__tests__/client.test.ts > normalizes non-json error responses
 api_error { path: '/bff/admin/boom', status: 500, request_id: undefined }
 
+ ✓ src/app/__tests__/client.test.ts > normalizes json error responses
+ ✓ src/app/__tests__/client.test.ts > normalizes non-json error responses
  ✓ src/features/chat/__tests__/ChatMessageList.test.tsx > shows empty state when no messages
  ✓ src/features/chat/__tests__/ChatMessageList.test.tsx > renders message content
  ✓ src/features/payments/__tests__/api.test.ts > Payments API > should have Payments API tests defined
@@ -79,6 +79,6 @@ Error: Transform failed with 1 error:
 
  Test Files  2 failed | 13 passed (15)
       Tests  35 passed (35)
-   Start at  20:25:56
-   Duration  28.78s (transform 1.34s, setup 3.85s, collect 7.48s, tests 1.54s, environment 8.99s, prepare 2.54s)
+   Start at  20:32:18
+   Duration  30.84s (transform 1.50s, setup 3.90s, collect 8.07s, tests 1.91s, environment 9.87s, prepare 2.54s)
 

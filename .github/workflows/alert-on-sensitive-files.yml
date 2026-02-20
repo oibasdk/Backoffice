@@ -1,0 +1,18 @@
+name: Sensitive file watcher
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan for secrets (trufflehog)
+        uses: trufflesecurity/trufflehog-action@v2
+        with:
+          path: '.'
+          format: 'summary'

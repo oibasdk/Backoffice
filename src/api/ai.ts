@@ -10,7 +10,9 @@ const fetchWithRetries = async <T>(url: string, token?: string): Promise<T> => {
 };
 
 export const useAIAlerts = (token?: string) => {
-  return useQuery(['ai', 'alerts'], () => fetchWithRetries<Anomaly[]>('/api/ai/alerts', token), {
+  return useQuery({
+    queryKey: ['ai', 'alerts'],
+    queryFn: () => fetchWithRetries<Anomaly[]>('/api/ai/alerts', token),
     staleTime: 30_000,
     retry: 3,
     refetchInterval: 60_000,
@@ -18,7 +20,9 @@ export const useAIAlerts = (token?: string) => {
 };
 
 export const useAIAnomalies = (token?: string) => {
-  return useQuery(['ai', 'anomalies'], () => fetchWithRetries<Anomaly[]>('/api/ai/anomalies', token), {
+  return useQuery({
+    queryKey: ['ai', 'anomalies'],
+    queryFn: () => fetchWithRetries<Anomaly[]>('/api/ai/anomalies', token),
     staleTime: 30_000,
     retry: 3,
     refetchInterval: 60_000,
@@ -26,7 +30,9 @@ export const useAIAnomalies = (token?: string) => {
 };
 
 export const useAIPredictions = (token?: string) => {
-  return useQuery(['ai', 'predictions'], () => fetchWithRetries<Prediction[]>('/api/ai/predictions', token), {
+  return useQuery({
+    queryKey: ['ai', 'predictions'],
+    queryFn: () => fetchWithRetries<Prediction[]>('/api/ai/predictions', token),
     staleTime: 60_000,
     retry: 3,
     refetchInterval: 120_000,
