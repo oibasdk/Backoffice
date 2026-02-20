@@ -85,4 +85,4 @@ vi.mock('../../../hooks/useWebSocket', () => {
               );
               expect(screen.getByText(/No insights at the moment/i)).toBeInTheDocument();
             });
-          });
+          })
