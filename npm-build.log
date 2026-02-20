@@ -1,5 +1,18 @@
-npm error code EJSONPARSE
-npm error JSON.parse Invalid package.json: JSONParseError: Expected double-quoted property name in JSON at position 1518 (line 54 column 3) while parsing near "...\": \"^1.5.3\",\n    \n  }\n}\n"
-npm error JSON.parse Failed to parse JSON data.
-npm error JSON.parse Note: package.json must be actual JSON, not just JavaScript.
-npm error A complete log of this run can be found in: /home/codespace/.npm/_logs/2026-02-20T02_40_13_577Z-debug-0.log
+
+> sharoobi-backoffice@0.1.0 build
+> vite build
+
+vite v5.4.21 building for production...
+transforming...
+✓ 4 modules transformed.
+x Build failed in 263ms
+error during build:
+[vite:css] [postcss] It looks like you're trying to use `tailwindcss` directly as a PostCSS plugin. The PostCSS plugin has moved to a separate package, so to continue using Tailwind CSS with PostCSS you'll need to install `@tailwindcss/postcss` and update your PostCSS configuration.
+file: /workspaces/Backoffice/src/design-system/styles/global.css:undefined:NaN
+    at at (/workspaces/Backoffice/node_modules/tailwindcss/dist/lib.js:38:1643)
+    at LazyResult.runOnRoot (/workspaces/Backoffice/node_modules/postcss/lib/lazy-result.js:361:16)
+    at LazyResult.runAsync (/workspaces/Backoffice/node_modules/postcss/lib/lazy-result.js:290:26)
+    at async compileCSS (file:///workspaces/Backoffice/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+    at async Object.transform (file:///workspaces/Backoffice/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+    at async transform (file:///workspaces/Backoffice/node_modules/rollup/dist/es/shared/node-entry.js:21283:16)
+    at async ModuleLoader.addModuleSource (file:///workspaces/Backoffice/node_modules/rollup/dist/es/shared/node-entry.js:21497:36)

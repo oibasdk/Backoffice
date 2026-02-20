@@ -22,3 +22,17 @@ Accessibility checks:
 - For CI axe/Lighthouse runs we recommend using `axe-playwright` or running Lighthouse in a headless browser in CI.
 
 If you run the commands above and paste `npm-test.log` and `npm-build.log` here, I'll analyze failures and push fixes.
+
+Quick diagnostics you can run locally (copy/paste the output here):
+
+```bash
+# generate feature flag report
+npm run feature-flags && cat feature-flag-report.json | sed -n '1,120p'
+
+# run unit tests (include verbose logs)
+npm test -- --reporter verbose > npm-test.log 2>&1 || true
+tail -n 200 npm-test.log
+
+# run accessibility smoke (enable via env)
+RUN_A11Y=1 npm test -- src/tests/a11y/axe.test.ts
+```

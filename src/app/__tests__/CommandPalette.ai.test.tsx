@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { CommandPalette } from '../shell/CommandPalette';
 import { vi } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
@@ -28,11 +29,8 @@ describe('CommandPalette AI suggestions', () => {
 
     const input = screen.getByPlaceholderText(/command.hint/i);
     input.focus();
-    // simulate typing by changing value
-    await waitFor(() => {
-      (input as HTMLInputElement).value = 'analytics';
-      input.dispatchEvent(new Event('input', { bubbles: true }));
-    });
+    // type using userEvent to ensure proper events are fired and debounced handlers run
+    await userEvent.type(input, 'analytics');
 
     // AI suggestion should appear (debounced)
     await waitFor(() => expect(screen.getByText(/Go to analytics/)).toBeInTheDocument(), { timeout: 2000 });

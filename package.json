@@ -14,9 +14,9 @@
     "test:coverage": "vitest --run --coverage",
     "test:pw": "playwright test",
     "test:pw:ui": "playwright test --ui",
-    "test:pw:headed": "playwright test --headed"
-    ,
-    "feature-flags": "node scripts/feature_flag_report.js"
+    "test:pw:headed": "playwright test --headed",
+    "feature-flags": "node scripts/feature_flag_report.js",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",

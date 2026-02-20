@@ -28,8 +28,21 @@ if (!window.matchMedia) {
 }
 
 // Global mock for react-i18next to provide `t` and `i18n` across tests
+import en from './app/locales/en.json';
+
 vi.mock('react-i18next', () => ({
-  useTranslation: () => ({ t: (s: string) => s, i18n: { language: 'en' } }),
+  useTranslation: () => ({
+    t: (s: string, opts?: any) => {
+      // return mapped English value if present, otherwise the key
+      // support simple interpolation for {{var}} patterns
+      const raw = (en as Record<string, string>)[s] ?? s;
+      if (opts && typeof raw === 'string') {
+        return raw.replace(/{{\s*(\w+)\s*}}/g, (_, k) => opts[k] ?? '');
+      }
+      return raw;
+    },
+    i18n: { language: 'en' },
+  }),
   initReactI18next: { type: '3rdParty', init: () => {} },
 }));
 
