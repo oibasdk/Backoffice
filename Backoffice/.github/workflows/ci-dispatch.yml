@@ -1,0 +1,53 @@
+name: CI - Manual Dispatch (tests + build)
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [ main ]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests (Vitest)
+        id: vitest
+        run: |
+          set -o pipefail
+          npx vitest --run --reporter verbose 2>&1 | tee vitest.log || true
+
+      - name: Upload vitest logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: vitest-log
+          path: vitest.log
+
+      - name: Build app
+        id: build
+        run: |
+          set -o pipefail
+          npm run build 2>&1 | tee build.log || true
+
+      - name: Upload build logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build.log
+
+      - name: Upload dist (if produced)
+        if: success() || always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-artifacts
+          path: dist || dist/** || dist/* || build || ''
