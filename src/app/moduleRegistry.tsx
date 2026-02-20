@@ -141,6 +141,9 @@ const RemoteSessionPolicyDetailPage = lazy(() =>
     default: module.RemoteSessionPolicyDetailPage,
   }))
 );
+const PaymentsPageTailwind = lazy(() => import("../features/payments/PaymentsPage.Tailwind").then((m) => ({ default: m.default })));
+const TicketsPageTailwind = lazy(() => import("../features/tickets/TicketsPage.Tailwind").then((m) => ({ default: m.default })));
+const IAMPageTailwind = lazy(() => import("../features/iam/IAMPage.Tailwind").then((m) => ({ default: m.default })));
 const VendorApprovalsPage = lazy(() =>
   import("../features/marketplace/pages/VendorApprovalsPage").then((module) => ({
     default: module.VendorApprovalsPage,
@@ -1078,6 +1081,32 @@ export const MODULES: ModuleConfig[] = [
         labelKey: "nav.knowledge_payments",
         element: <KnowledgePaymentsPage />,
         nav: false,
+      },
+    ],
+  },
+  {
+    id: "tailwind_preview",
+    labelKey: "nav.tailwind_preview",
+    icon: <AutoAwesomeRoundedIcon />,
+    basePath: "/",
+    routes: [
+      {
+        path: "payments",
+        labelKey: "nav.payments",
+        element: <PaymentsPageTailwind />,
+        nav: true,
+      },
+      {
+        path: "tickets",
+        labelKey: "nav.tickets",
+        element: <TicketsPageTailwind />,
+        nav: true,
+      },
+      {
+        path: "iam",
+        labelKey: "nav.iam",
+        element: <IAMPageTailwind />,
+        nav: true,
       },
     ],
   },
